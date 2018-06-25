@@ -12,6 +12,7 @@ use app\models\ContactForm;
 use app\models\ParseForm;
 use app\models\vk;
 
+
 class SiteController extends Controller
 {
     /**
@@ -69,9 +70,13 @@ class SiteController extends Controller
              //die(print_r($_POST));
              $ParseForm_name = $_POST['ParseForm']['name'];
              //die(print_r($ParseForm_name));
+             if($ParseForm_name){
+                                $vk_form = new Vk();
+                                $vk_form ->vk($ParseForm_name);
+                            }
             return $this->render('index', [
             'parse_form' => $parse_form,
-            'data_name'=> $ParseForm_name,
+            //'data_name'=> $ParseForm_name,
          ]);
          }
         
